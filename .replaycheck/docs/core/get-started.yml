@@ -1,0 +1,53 @@
+# %version 1
+contentPath: docs\core\get-started.md
+
+variables: {}
+
+placeholders: {}
+
+steps:
+- task: RunCodeSnippet@1
+  environment:
+    type: ubuntu
+  uid: 45eb2b01
+- task: CheckCodeSnippet@1
+  contentValidationRules:
+  - operator: in
+    source: Task output
+    value: 494d6126 (Run a code snippet)
+  uid: 7295263d
+- task: LaunchApplication@1
+  program: /bin/notepad.exe
+  name: notepad
+  uid: dc06230b
+- task: ClickControl@1
+  appName: notepad
+  uid: ba339b60
+- task: CloseApplication@1
+  name: notepad
+  uid: 9e7610e9
+- task: CaptureScreenshot@1
+  appName: notepad
+  path: fizzbuzz.png
+  uid: dff6e1b0
+- task: LaunchVisualStudio@1
+  uid: "72197756"
+- task: CloseVisualStudio@1
+  uid: 77bc618d
+- task: WebBlurElement@1
+  element:
+    locators:
+    - method: Role
+      methodValue: Search
+      accessibleName: ffff
+  uid: 17f2e218
+- task: WebCaptureScreenshot@1
+  elements:
+  - locators:
+    - method: Label
+      methodValue: abc
+  - locators:
+    - method: Placeholder
+      methodValue: xyz
+  path: a/b/c.png
+  uid: f4f97e20

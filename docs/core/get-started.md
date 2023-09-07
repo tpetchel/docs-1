@@ -27,12 +27,22 @@ dotnet run
 
 You should see the following output:
 
+<!-- :::replaycheck-task id="45eb2b01"::: -->
+<!-- :::replaycheck-task id="7295263d"::: -->
 ```output
-Hello World!
+Hello, World!
 ```
 
 Congratulations! You've created a simple .NET application.
 
 ## Next steps
 
+<!-- :::replaycheck-task id="dc06230b"::: -->
+<!-- :::replaycheck-task id="ba339b60"::: -->
+<!-- :::replaycheck-task id="9e7610e9"::: -->
+<!-- :::replaycheck-task id="dff6e1b0"::: -->
+<!-- :::replaycheck-task id="72197756"::: -->
+<!-- :::replaycheck-task id="77bc618d"::: -->
+<!-- :::replaycheck-task id="17f2e218"::: -->
+<!-- :::replaycheck-task id="f4f97e20"::: -->
 Get started on developing .NET applications by following a [step-by-step tutorial](../standard/get-started.md) or by watching [.NET 101 videos](https://www.youtube.com/playlist?list=PLdo4fOcmZ0oWoazjhXQzBKMrFuArxpW80) on YouTube.

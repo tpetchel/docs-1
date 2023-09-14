@@ -6,6 +6,90 @@ variables: {}
 placeholders: {}
 
 steps:
+- task: LaunchApplication@1
+  program: notepad
+  name: np1
+  uid: 1879d8f7
+- task: CaptureScreenshot@1
+  appName: np1
+  uid: 10dc7875
+- task: ClickControl@1
+  appName: np1
+  control:
+    type: Button
+    locateBy:
+      value: Click
+  uid: 1e5e47bf
+- task: FillTextBox@1
+  appName: np1
+  textBox:
+    type: Text
+    locateBy:
+      method: Label
+      value: Name
+  text: Sally
+  uid: 1b440d2c
+- task: FocusControl@1
+  appName: notepad
+  control:
+    type: RadioButton
+    locateBy:
+      method: Label
+      value: "888"
+  uid: 1ac3611b
+- task: ResizeWindow@1
+  appName: notepad
+  width: 800
+  height: 600
+  uid: 7d2c6d4
+- task: SelectListItem@1
+  appName: np1
+  listBox:
+    type: Menu
+    locateBy:
+      value: aaa
+  item: Applies
+  uid: 5135a3c
+- task: SetWindowState@1
+  appName: notepad
+  state: Maximized
+  uid: 490abaa
+- task: ToggleCheckbox@1
+  appName: notepad
+  checkbox:
+    type: CheckBox
+    locateBy:
+      method: Label
+      value: cb1
+  uid: 134829e
+- task: CloseApplication@1
+  name: np1
+  uid: f1eef88
+- task: MoveFile@1
+  source: /var/foo.txt
+  target: /var/bar.txt
+  uid: beda134d
+- task: WriteFile@1
+  filename: /var/foo.txt
+  content: aaaaa bbbbb ccccc ddddd
+  uid: bb3d6d4b
+- task: GitHubFork@1
+  environment:
+    type: github
+  owner: octocat
+  repo: hello-world
+  organization: myorg
+  name: hi
+  defaultBranchOnly: false
+  replaceExisting: false
+  uid: fb54b36
+- task: JupyterRunNotebooks@1
+  environment:
+    type: jupyter-sandbox
+  uid: a9236c0
+- task: GenerateWindowsPassword@1
+  variable: mypassword1
+  uid: f29ed818
 - task: RunCodeSnippet@1
   environment:
     type: ubuntu
@@ -22,6 +106,10 @@ steps:
   uid: dc06230b
 - task: ClickControl@1
   appName: notepad
+  control:
+    type: Slider
+    locateBy:
+      value: myslider1
   uid: ba339b60
 - task: CloseApplication@1
   name: notepad
@@ -51,3 +139,104 @@ steps:
       methodValue: xyz
   path: a/b/c.png
   uid: f4f97e20
+- task: WebCheckElement@1
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: cb5a1176
+- task: WebClearInputField@1
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: ce084a33
+- task: WebClickElement@1
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: c1a32427
+- task: WebGetElementText@1
+  variable: foob1
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: c4fee7c3
+- task: WebDoubleClickElement@1
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: c67a30a6
+- task: WebFillInputField@1
+  fillValue: dirt
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: 47cd8fd
+- task: WebHoverElement@1
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: 7f7ba69
+- task: WebNavigate@1
+  address: learn.microsoft.com
+  uid: 1a2fa4bb
+- task: WebNavigateAzurePortal@1
+  uid: 129e7b6f
+- task: WebPressKey@1
+  key: Delete
+  modifiers:
+  - Control
+  - Alt
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: 16e5f931
+- task: WebBlurElement@1
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: 21b144ad
+- task: WebSelectOptions@1
+  options:
+  - value: val
+  - label: lbl
+  - index: 42
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: "27008382"
+- task: WebSetElementText@1
+  text: new text
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: 3bd524e4
+- task: WebFocusElement@1
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: 3e75c3eb
+- task: WebTypeInputField@1
+  text: valuable words
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: 31d42910
+- task: WebUncheckElement@1
+  element:
+    locators:
+    - method: Placeholder
+      methodValue: xyz
+  uid: 379a5c60

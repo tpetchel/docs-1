@@ -1,0 +1,51 @@
+# %version 1
+contentPath: docs\standard\base-types\parsing-datetime.md
+
+steps:
+- task: RunCodeSnippetReference@1
+  outputMarker: Displays the following output
+  environment:
+    type: dotnet-try
+  uid: b4afa9e
+- task: RunCodeSnippetReference@1
+  outputMarker: Displays the following output
+  environment:
+    type: dotnet-sdk
+  uid: 1a74dd9
+  condition: Always
+- task: RunCodeSnippetReference@1
+  outputMarker: displays the following output
+  environment:
+    type: dotnet-try
+  uid: 42952e0f
+  condition: Always
+- task: RunCodeSnippetReference@1
+  outputMarker: displays the following output
+  environment:
+    type: dotnet-sdk
+  uid: 5e389c0e
+  condition: Always
+- task: RunCodeSnippetReference@1
+  outputMarker: displays the following output
+  environment:
+    type: dotnet-try
+  uid: 55dbf38c
+  condition: Always
+- task: RunCodeSnippetReference@1
+  outputMarker: displays the following output
+  environment:
+    type: dotnet-sdk
+  uid: 6995b8cc
+  condition: Always
+- task: RunCodeSnippetReference@1
+  outputMarker: displays the following output
+  environment:
+    type: dotnet-try
+  uid: 630b1766
+  condition: Always
+- task: RunCodeSnippetReference@1
+  outputMarker: displays the following output
+  environment:
+    type: dotnet-sdk
+  uid: "78039e36"
+  condition: Always

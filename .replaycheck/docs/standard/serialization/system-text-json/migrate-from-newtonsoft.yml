@@ -1,0 +1,16 @@
+# %version 1
+contentPath: docs\standard\serialization\system-text-json\migrate-from-newtonsoft.md
+
+steps:
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-script
+  uid: e7ad01a4
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-script
+  uid: "45101448"
+- task: RunCodeSnippetReference@1
+  environment:
+    type: dotnet-sdk
+  uid: 53bebf05

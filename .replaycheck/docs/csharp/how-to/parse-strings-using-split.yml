@@ -1,0 +1,19 @@
+# %version 1
+contentPath: docs\csharp\how-to\parse-strings-using-split.md
+
+steps:
+- task: RunCodeSnippetReference@1
+  environment:
+    type: dotnet-try
+  outputValidationRules:
+  - value: <The>\n<quick>\n<brown>\n<fox>\n<jumps>\n<over>\n<the>\n<lazy>\n<dog.>
+  - operator: contains
+    value: The quick brown fox
+  uid: c0e4ce9
+- task: Delay@1
+  uid: 524e438a
+- task: RunCommand@1
+  command: echo "HELLO"
+  environment:
+    type: bash
+  uid: 6ae77ffb

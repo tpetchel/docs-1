@@ -5,8 +5,26 @@ steps:
 - task: RunCodeSnippet@1
   environment:
     type: dotnet-sdk
-  uid: 55ea7915
-- task: RunCodeSnippet@1
-  environment:
-    type: dotnet-sdk
   uid: 6611b999
+- task: DownloadFile@1
+  url: https://aka.ms/downloadazcopy-v10-linux
+  captureFilename: azCopy
+  uid: 7e9b3a4d
+  condition: Always
+- task: ExpandArchive@1
+  source: ${azCopy}
+  captureFilename: azCopy2
+  uid: 40808d36
+- task: RunCommand@1
+  command: stat /workspace/${azCopy2}/azcopy
+  environment:
+    type: bash
+  uid: addca35e
+- task: DownloadFile@1
+  url: https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-zip-file.zip
+  captureFilename: Zipball
+  uid: 5c133b69
+- task: ExpandArchive@1
+  source: ${Zipball}
+  captureFilename: Fooseball
+  uid: 6d62085f

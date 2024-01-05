@@ -16,6 +16,7 @@ adobe-target: true
 
 You convert a `string` to a number by calling the `Parse` or `TryParse` method found on numeric types (`int`, `long`, `double`, and so on), or by using methods in the <xref:System.Convert?displayProperty=nameWithType> class.
   
+<!-- replaycheck-task id="88d963a8" -->
 It's slightly more efficient and straightforward to call a `TryParse` method (for example, [`int.TryParse("11", out number)`](xref:System.Int32.TryParse%2A)) or `Parse` method (for example, [`var number = int.Parse("11")`](xref:System.Int32.Parse%2A)). Using a <xref:System.Convert> method is more useful for general objects that implement <xref:System.IConvertible>.
   
 You use `Parse` or `TryParse` methods on the numeric type you expect the string contains, such as the <xref:System.Int32?displayProperty=nameWithType> type.  The <xref:System.Convert.ToInt32%2A?displayProperty=nameWithType> method uses <xref:System.Int32.Parse%2A> internally.  The `Parse` method returns the converted number; the `TryParse` method returns a boolean value that indicates whether the conversion succeeded, and returns the converted number in an `out` parameter. If the string isn't in a valid format, `Parse` throws an exception, but `TryParse` returns `false`. When calling a `Parse` method, you should always use exception handling to catch a <xref:System.FormatException> when the parse operation fails.
@@ -26,6 +27,7 @@ The `Parse` and `TryParse` methods ignore white space at the beginning and at th
 
 The following example demonstrates both successful and unsuccessful calls to `Parse` and `TryParse`.
 
+<!-- :::replaycheck-task id="20997d1a"::: -->
 [!code-csharp[Parse and TryParse](~/samples/snippets/csharp/programming-guide/string-to-number/parse-tryparse/program.cs)]
 
 The following example illustrates one approach to parsing a string expected to include leading numeric characters (including hexadecimal characters) and trailing non-numeric characters. It assigns valid characters from the beginning of a string to a new string before calling the <xref:System.Int32.TryParse%2A> method. Because the strings to be parsed contain a few characters, the example calls the <xref:System.String.Concat%2A?displayProperty=nameWithType> method to assign valid characters to a new string. For a larger string, the <xref:System.Text.StringBuilder> class can be used instead.

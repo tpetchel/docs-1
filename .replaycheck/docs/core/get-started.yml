@@ -1,0 +1,37 @@
+# %version 1
+contentPath: docs\core\get-started.md
+
+steps:
+- task: RunCommand@1
+  command: CREATE DATABASE MyLedgerDB;
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: 1028957f
+- task: RunCommand@1
+  command: CREATE DATABASE MyLedgerDB ( EDITION = 'GeneralPurpose' ) WITH LEDGER = ON;
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: e0451ba8
+  condition: Never
+- task: RunCommand@1
+  command: CREATE DATABASE MyLedgerDB ( EDITION = 'GeneralPurpose' ) WITH LEDGER = ON;
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: e1139911
+  condition: Never
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  outputValidationRules:
+  - operator: contains
+    value: 1 Clamp
+  uid: cfae9649
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: dd685630

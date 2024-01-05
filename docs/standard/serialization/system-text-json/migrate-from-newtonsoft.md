@@ -269,6 +269,7 @@ A value enclosed in single quotes results in a [JsonException](xref:System.Text.
 }
 ```
 
+<!-- replaycheck-task id="e7ad01a4" -->
 ```csharp
 public class ExampleClass
 {
@@ -392,6 +393,7 @@ To support polymorphic deserialization in older .NET versions, create a converte
 
 By default, System.Text.Json doesn't support deserializing string enum values, whereas `Newtonsoft.Json` does. For example, the following code throws a <xref:System.Text.Json.JsonException>:
 
+<!-- replaycheck-task id="45101448" -->
 ```csharp
 string json = "{ \"Text\": \"Hello\", \"Enum\": \"Two\" }";
 var _ = JsonSerializer.Deserialize<MyObj>(json); // Throws exception.
@@ -503,6 +505,7 @@ To make deserialization fail if no `Date` property is in the JSON, choose one of
 
 The following sample converter code throws an exception if the `Date` property isn't set after deserialization is complete:
 
+<!-- replaycheck-task id="53bebf05" -->
 :::code language="csharp" source="snippets/how-to/csharp/WeatherForecastRequiredPropertyConverter.cs":::
 
 Register this custom converter by [adding the converter](converters-how-to.md#registration-sample---converters-collection) to the <xref:System.Text.Json.JsonSerializerOptions.Converters?displayProperty=nameWithType> collection.

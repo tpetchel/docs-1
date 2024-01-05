@@ -1,0 +1,30 @@
+# %version 1
+contentPath: docs\csharp\tour-of-csharp\tutorials\index.md
+
+steps:
+- task: InstallPackages@1
+  environment:
+    type: dotnet-sdk
+  packages:
+  - git
+  uid: b1ecce4f
+- task: RunCommand@1
+  command: git clone https://github.com/dotnet/try-samples.git && cd try-samples/101-linq-samples/src
+  environment:
+    type: dotnet-sdk
+  uid: dbe345ae
+- task: RunCommand@1
+  command: dotnet build --framework net8.0
+  environment:
+    type: dotnet-sdk
+  exitCodeValidationRules:
+  - value: 0
+  uid: ebe8cd10
+- task: RunCommand@1
+  command: dotnet run --framework net8.0
+  environment:
+    type: dotnet-sdk
+  uid: ce99eb28
+- task: WebNavigate@1
+  address: www.bing.com
+  uid: a77cc494

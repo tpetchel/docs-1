@@ -18,10 +18,13 @@ to split strings on other specific characters or strings.
 
 [!INCLUDE[interactive-note](~/includes/csharp-interactive-note.md)]
 
+<!-- replaycheck-task id="6ae77ffb" -->
 The following code splits a common phrase into an array of strings for each word.
 
+<!-- replaycheck-task id="c0e4ce9" -->
 :::code language="csharp" interactive="try-dotnet-method" source="../../../samples/snippets/csharp/how-to/strings/ParseStringsUsingSplit.cs" id="Snippet1":::
 
+<!-- replaycheck-task id="524e438a" -->
 Every instance of a separator character produces a value in the
 returned array. Consecutive separator characters produce the empty string
 as a value in the returned array. You can see how an empty string is created in the following example,

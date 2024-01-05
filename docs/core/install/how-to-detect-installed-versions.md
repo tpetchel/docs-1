@@ -8,7 +8,7 @@ ms.custom: "updateeachrelease"
 zone_pivot_groups: operating-systems-set-one
 ---
 
-# How to check that .NET is already installed
+# How to check that .NET is already installed222
 
 This article teaches you how to check which versions of the .NET runtime and SDK are installed on your computer. If you have an integrated development environment, such as Visual Studio, .NET may have already been installed.
 
@@ -18,9 +18,13 @@ If any command in this article fails, you don't have the runtime or SDK installe
 
 ## Check SDK versions
 
+<!-- :::replaycheck-task id="7e9b3a4d"::: -->
+<!-- :::replaycheck-task id="40808d36"::: -->
+<!-- :::replaycheck-task id="addca35e"::: -->
 You can see which versions of the .NET SDK are currently installed with a terminal. Open a terminal and run the following command.
 
-<!-- :::replaycheck-task id="55ea7915"::: -->
+<!-- :::replaycheck-task id="5c133b69"::: -->
+<!-- :::replaycheck-task id="6d62085f"::: -->
 ```dotnetcli
 dotnet --list-sdks
 ```

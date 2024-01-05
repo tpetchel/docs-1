@@ -61,6 +61,7 @@ This tutorial assumes that you've finished the [Hello world](hello-world.yml) an
 
 ## [List collection](list-collection.yml)
 
+<!-- :::replaycheck-task id="a77cc494"::: -->
 The [List collection](list-collection.yml) lesson gives you
 a tour of the List collection type that stores sequences of data. You'll learn how to add and remove items, search for items, and sort the lists. You'll explore different kinds of lists. This tutorial is also
 available [to run locally on your machine](arrays-and-collections.md).
@@ -69,4 +70,8 @@ This tutorial assumes that you've finished the lessons listed above.
 
 ## [101 Linq Samples](https://github.com/dotnet/try-samples/tree/main/101-linq-samples)
 
+<!-- :::replaycheck-task id="b1ecce4f"::: -->
+<!-- :::replaycheck-task id="dbe345ae"::: -->
+<!-- :::replaycheck-task id="ebe8cd10"::: -->
+<!-- :::replaycheck-task id="ce99eb28"::: -->
 This sample requires the [dotnet-try](https://github.com/dotnet/try/blob/main/README.md#setup) global tool. Once you install the tool, and clone the [try-samples](https://github.com/dotnet/try-samples) repo, you can learn Language Integrated Query (LINQ) through a set of 101 samples you can run interactively. You can explore different ways to query, explore, and transform data sequences.

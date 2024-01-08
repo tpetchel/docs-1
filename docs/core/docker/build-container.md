@@ -51,6 +51,7 @@ If you have .NET installed, use the `dotnet --info` command to determine which S
 
 You need a .NET app that the Docker container runs. Open your terminal, create a working folder if you haven't already, and enter it. In the working folder, run the following command to create a new project in a subdirectory named *App*:
 
+<!-- replaycheck-task id="25c3b3d3" -->
 ```dotnetcli
 dotnet new console -o App -n DotNet.Docker
 ```
@@ -70,12 +71,17 @@ Your folder tree looks like the following:
             └── project.nuget.cache
 ```
 
-The `dotnet new` command creates a new folder named *App* and generates a "Hello World" console application. Change directories and navigate into the *App* folder, from your terminal session. Use the `dotnet run` command to start the app. The application runs, and print `Hello World!` below the command:
+The `dotnet new` command creates a new folder named *App* and generates a "Hello World" console application. Change directories and navigate into the *App* folder, from your terminal session. Use the `dotnet run` command to start the app. The application runs, and print `Hello, World!` below the command:
 
+<!-- replaycheck-task id="ed8fe35c" -->
 ```dotnetcli
 cd App
 dotnet run
-Hello World!
+```
+
+<!-- replaycheck-task id="2ed71cb" -->
+```output
+Hello, World!
 ```
 
 The default template creates an app that prints to the terminal and then immediately terminates. For this tutorial, you use an app that loops indefinitely. Open the *Program.cs* file in a text editor.
@@ -99,6 +105,7 @@ Replace the file with the following code that counts numbers every second:
 
 :::zone pivot="dotnet-8-0"
 
+<!-- replaycheck-task id="990c5383" -->
 :::code source="snippets/8.0/App/Program.cs":::
 
 :::zone-end
@@ -110,8 +117,12 @@ Replace the file with the following code that counts numbers every second:
 
 Save the file and test the program again with `dotnet run`. Remember that this app runs indefinitely. Use the cancel command <kbd>Ctrl+C</kbd> to stop it. The following is an example output:
 
+<!-- replaycheck-task id="12fd8656" -->
 ```dotnetcli
 dotnet run
+```
+
+```output
 Counter: 1
 Counter: 2
 Counter: 3
@@ -128,6 +139,7 @@ If you pass a number on the command line to the app, it will only count up to th
 
 Before adding the .NET app to the Docker image, first it must be published. It's best to have the container run the published version of the app. To publish the app, run the following command:
 
+<!-- replaycheck-task id="4180b1c0" -->
 ```dotnetcli
 dotnet publish -c Release
 ```
@@ -188,9 +200,17 @@ Use the `ls` command to get a directory listing and verify that the *DotNet.Dock
 
 :::zone pivot="dotnet-8-0"
 
+<!-- replaycheck-task id="9d1af4fd" -->
 ```bash
-me@DESKTOP:/docker-working/app$ ls bin/Release/net8.0/publish
-DotNet.Docker.deps.json  DotNet.Docker.dll  DotNet.Docker.exe  DotNet.Docker.pdb  DotNet.Docker.runtimeconfig.json
+ls bin/Release/net8.0/publish
+```
+
+```output
+DotNet.Docker
+DotNet.Docker.deps.json
+DotNet.Docker.dll
+DotNet.Docker.pdb
+DotNet.Docker.runtimeconfig.json
 ```
 
 :::zone-end
@@ -213,6 +233,7 @@ Create a file named *Dockerfile* in the directory containing the *.csproj* and o
 
 :::zone pivot="dotnet-8-0"
 
+<!-- replaycheck-task id="957c153d" -->
 :::code language="docker" source="snippets/8.0/App/Dockerfile":::
 
 > [!NOTE]
@@ -282,6 +303,8 @@ Save the *Dockerfile* file. The directory structure of the working folder should
 
 From your terminal, run the following command:
 
+<!-- replaycheck-task id="64646b37" -->
+<!-- replaycheck-task id="7cc14ac8" -->
 ```console
 docker build -t counter-image -f Dockerfile .
 ```
@@ -290,8 +313,12 @@ Docker will process each line in the *Dockerfile*. The `.` in the `docker build`
 
 :::zone pivot="dotnet-8-0"
 
+<!-- replaycheck-task id="a262c86c" -->
 ```console
 docker images
+```
+
+```output
 REPOSITORY                         TAG       IMAGE ID       CREATED          SIZE
 counter-image                      latest    2f15637dc1f6   10 minutes ago   217MB
 ```
@@ -346,6 +373,7 @@ The next command, `ENTRYPOINT`, tells Docker to configure the container to run a
 
 Now that you have an image that contains your app, you can create a container. You can create a container in two ways. First, create a new container that is stopped.
 
+<!-- replaycheck-task id="533da713" -->
 ```console
 docker create --name core-counter counter-image
 ```
@@ -358,8 +386,12 @@ d0be06126f7db6dd1cee369d911262a353c9b7fb4829a0c11b4b2eb7b2d429cf
 
 To see a list of *all* containers, use the `docker ps -a` command:
 
+<!-- replaycheck-task id="66d29a9d" -->
 ```console
 docker ps -a
+```
+
+```output
 CONTAINER ID   IMAGE           COMMAND                  CREATED          STATUS    PORTS     NAMES
 d0be06126f7d   counter-image   "dotnet DotNet.Docke…"   12 seconds ago   Created             core-counter
 ```
@@ -368,22 +400,44 @@ d0be06126f7d   counter-image   "dotnet DotNet.Docke…"   12 seconds ago   Creat
 
 The container was created with a specific name `core-counter`, this name is used to manage the container. The following example uses the `docker start` command to start the container, and then uses the `docker ps` command to only show containers that are running:
 
+<!-- replaycheck-task id="f5accfcc" -->
 ```console
 docker start core-counter
-core-counter
+```
 
+<!-- replaycheck-task id="5d03b4f" -->
+```output
+core-counter
+```
+
+<!-- replaycheck-task id="15746506" -->
+```console
 docker ps
+```
+
+```output
 CONTAINER ID   IMAGE           COMMAND                  CREATED          STATUS          PORTS     NAMES
 cf01364df453   counter-image   "dotnet DotNet.Docke…"   53 seconds ago   Up 10 seconds             core-counter
 ```
 
 Similarly, the `docker stop` command stops the container. The following example uses the `docker stop` command to stop the container, and then uses the `docker ps` command to show that no containers are running:
 
+<!-- replaycheck-task id="24bae5cc" -->
 ```console
 docker stop core-counter
-core-counter
+```
 
+<!-- replaycheck-task id="6b9ea7ed" -->
+```output
+core-counter
+```
+
+<!-- replaycheck-task id="7689d1d8" -->
+```console
 docker ps
+```
+
+```output
 CONTAINER ID    IMAGE    COMMAND    CREATED    STATUS    PORTS    NAMES
 ```
 
@@ -393,17 +447,34 @@ After a container is running, you can connect to it to see the output. Use the `
 
 After you detach from the container, reattach to verify that it's still running and counting.
 
+<!-- replaycheck-task id="43351634" -->
 ```console
 docker start core-counter
-core-counter
+```
 
+<!-- replaycheck-task id="ea4d12c5" -->
+```output
+core-counter
+```
+
+<!-- replaycheck-task id="8c16b622" -->
+```console
 docker attach --sig-proxy=false core-counter
+```
+
+```output
 Counter: 7
 Counter: 8
 Counter: 9
 ^C
+```
 
+<!-- replaycheck-task id="a2104767" -->
+```console
 docker attach --sig-proxy=false core-counter
+```
+
+```output
 Counter: 17
 Counter: 18
 Counter: 19
@@ -414,21 +485,39 @@ Counter: 19
 
 For this article, you don't want containers hanging around that don't do anything. Delete the container you previously created. If the container is running, stop it.
 
+<!-- replaycheck-task id="c1e8042e" -->
 ```console
 docker stop core-counter
 ```
 
 The following example lists all containers. It then uses the `docker rm` command to delete the container and then checks a second time for any running containers.
 
+<!-- replaycheck-task id="db4eda58" -->
 ```console
 docker ps -a
+```
+
+```output
 CONTAINER ID    IMAGE            COMMAND                   CREATED          STATUS                        PORTS    NAMES
 2f6424a7ddce    counter-image    "dotnet DotNet.Dock…"    7 minutes ago    Exited (143) 20 seconds ago            core-counter
+```
 
+<!-- replaycheck-task id="58a43f53" -->
+```console
 docker rm core-counter
-core-counter
+```
 
+<!-- replaycheck-task id="5efcac90" -->
+```output
+core-counter
+```
+
+<!-- replaycheck-task id="6fa484e0" -->
+```console
 docker ps -a
+```
+
+```output
 CONTAINER ID    IMAGE    COMMAND    CREATED    STATUS    PORTS    NAMES
 ```
 
@@ -436,8 +525,12 @@ CONTAINER ID    IMAGE    COMMAND    CREATED    STATUS    PORTS    NAMES
 
 Docker provides the `docker run` command to create and run the container as a single command. This command eliminates the need to run `docker create` and then `docker start`. You can also set this command to automatically delete the container when the container stops. For example, use `docker run -it --rm` to do two things, first, automatically use the current terminal to connect to the container, and then when the container finishes, remove it:
 
+<!-- replaycheck-task id="7cbfec9b" -->
 ```console
 docker run -it --rm counter-image
+```
+
+```output
 Counter: 1
 Counter: 2
 Counter: 3
@@ -448,8 +541,12 @@ Counter: 5
 
 The container also passes parameters into the execution of the .NET app. To instruct the .NET app to count only to three, pass in 3.
 
+<!-- replaycheck-task id="8d62641f" -->
 ```console
 docker run -it --rm counter-image 3
+```
+
+```output
 Counter: 1
 Counter: 2
 Counter: 3
@@ -457,8 +554,12 @@ Counter: 3
 
 With `docker run -it`, the <kbd>Ctrl+C</kbd> command stops the process that's running in the container, which in turn, stops the container. Since the `--rm` parameter was provided, the container is automatically deleted when the process is stopped. Verify that it doesn't exist:
 
+<!-- replaycheck-task id="9ed8a1f1" -->
 ```console
 docker ps -a
+```
+
+```output
 CONTAINER ID    IMAGE    COMMAND    CREATED    STATUS    PORTS    NAMES
 ```
 

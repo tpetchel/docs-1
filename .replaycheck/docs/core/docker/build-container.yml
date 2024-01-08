@@ -1,0 +1,181 @@
+# %version 1
+contentPath: docs\core\docker\build-container.md
+
+steps:
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  exitCodeValidationRules:
+  - value: 0
+  uid: 25c3b3d3
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: ed8fe35c
+- task: CheckCodeSnippet@1
+  contentValidationRules:
+  - source: Task output
+    value: ed8fe35c (Run a code snippet)
+  uid: 2ed71cb
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: App/Program.cs
+  uid: 990c5383
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  append: ' -- 5'
+  exitCodeValidationRules:
+  - value: 0
+  uid: 12fd8656
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 4180b1c0
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 9d1af4fd
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: App/Dockerfile
+  uid: 957c153d
+- task: ChangeDirectory@1
+  path: App
+  uid: 64646b37
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  uid: 7cc14ac8
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  outputValidationRules:
+  - operator: contains
+    value: counter-image
+  uid: a262c86c
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  exitCodeValidationRules:
+  - value: 0
+  uid: 533da713
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  outputValidationRules:
+  - operator: contains
+    value: counter-image
+  uid: 66d29a9d
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  exitCodeValidationRules:
+  - value: 0
+  uid: f5accfcc
+- task: CheckCodeSnippet@1
+  contentValidationRules:
+  - source: Task output
+    value: f5accfcc (Run a code snippet)
+  uid: 5d03b4f
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  outputValidationRules:
+  - operator: contains
+    value: counter-image
+  uid: "15746506"
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  exitCodeValidationRules:
+  - value: 0
+  uid: 24bae5cc
+- task: CheckCodeSnippet@1
+  contentValidationRules:
+  - source: Task output
+    value: 24bae5cc (Run a code snippet)
+  uid: 6b9ea7ed
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  outputValidationRules:
+  - operator: notContains
+    value: counter-image
+  uid: 7689d1d8
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  uid: "43351634"
+- task: CheckCodeSnippet@1
+  contentValidationRules:
+  - source: Task output
+    value: 43351634 (Run a code snippet)
+  uid: ea4d12c5
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  background:
+    timeoutSeconds: 20
+  outputValidationRules:
+  - operator: contains
+    value: "9"
+  uid: 8c16b622
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  background:
+    timeoutSeconds: 20
+  uid: a2104767
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  uid: c1e8042e
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  outputValidationRules:
+  - operator: contains
+    value: core-counter
+  uid: db4eda58
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  uid: 58a43f53
+- task: CheckCodeSnippet@1
+  contentValidationRules:
+  - source: Task output
+    value: 58a43f53 (Run a code snippet)
+  uid: 5efcac90
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  outputValidationRules:
+  - operator: notContains
+    value: core-counter
+  uid: 6fa484e0
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  append: "5"
+  outputValidationRules:
+  - operator: contains
+    value: "5"
+  uid: 7cbfec9b
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  outputValidationRules:
+  - operator: contains
+    value: "3"
+  uid: 8d62641f
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  outputValidationRules:
+  - operator: notContains
+    value: core-counter
+  uid: 9ed8a1f1

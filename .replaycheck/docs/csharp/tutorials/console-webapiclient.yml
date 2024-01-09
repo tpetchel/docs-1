@@ -1,0 +1,59 @@
+# %version 1
+contentPath: docs\csharp\tutorials\console-webapiclient.md
+
+steps:
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 88a23594
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: f6c95860
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 8914cb9
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: WebApiClient/Program.cs
+  uid: 997444c7
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 39897d3c
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: WebApiClient/Repository.cs
+  uid: 307bdd02
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: WebApiClient/Program.cs
+  uid: d8f84399
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: ff02c0d4
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: WebApiClient/Repository.cs
+  uid: dd18ef0
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: WebApiClient/Program.cs
+  uid: 1437f129
+- task: RunCommand@1
+  command: dotnet run
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: b258a6cc
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: WebApiClient/Program.cs
+  uid: ef442c63
+- task: RunCommand@1
+  command: dotnet run
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 9c8736e

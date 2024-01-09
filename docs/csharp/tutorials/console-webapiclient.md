@@ -30,6 +30,7 @@ directory.
 
 1. Enter the following command in a console window:
 
+   <!-- replaycheck-task id="88a23594" -->
    ```dotnetcli
    dotnet new console --name WebAPIClient
    ```
@@ -38,10 +39,12 @@ directory.
 
 1. Navigate into the "WebAPIClient" directory, and run the app.
 
+   <!-- replaycheck-task id="f6c95860" -->
    ```dotnetcli
    cd WebAPIClient
    ```
 
+   <!-- replaycheck-task id="8914cb9" -->
    ```dotnetcli
    dotnet run
    ```
@@ -112,8 +115,32 @@ Use the <xref:System.Net.Http.HttpClient> class to make HTTP requests. <xref:Sys
    * Awaits the task returned from calling <xref:System.Net.Http.HttpClient.GetStringAsync(System.String)?displayProperty=nameWithType> method. This method sends an HTTP GET request to the specified URI. The body of the response is returned as a <xref:System.String>, which is available when the task completes.
    * The response string `json` is printed to the console.
 
+   *Program.cs* looks like this:
+
+   <!-- replaycheck-task id="997444c7" -->
+   ```csharp
+   using System.Net.Http.Headers;
+
+   using HttpClient client = new();
+   client.DefaultRequestHeaders.Accept.Clear();
+   client.DefaultRequestHeaders.Accept.Add(
+       new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
+   client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
+
+   await ProcessRepositoriesAsync(client);
+
+   static async Task ProcessRepositoriesAsync(HttpClient client)
+   {
+       var json = await client.GetStringAsync(
+           "https://api.github.com/orgs/dotnet/repos");
+    
+       Console.Write(json);
+   }
+   ```
+
 1. Build the app and run it.
 
+   <!-- replaycheck-task id="39897d3c" -->
    ```dotnetcli
    dotnet run
    ```
@@ -126,6 +153,7 @@ The following steps convert the JSON response into C# objects. You use the <xref
 
 1. Create a file named *Repository.cs* and add the following code:
 
+   <!-- replaycheck-task id="307bdd02" -->
    ```csharp
    public record class Repository(string name);
    ```
@@ -172,8 +200,36 @@ The following steps convert the JSON response into C# objects. You use the <xref
     using System.Text.Json;
     ```
 
+    *Program.cs* looks like this:
+
+   <!-- replaycheck-task id="d8f84399" -->
+    ```csharp
+    using System.Net.Http.Headers;
+    using System.Text.Json;
+    
+    using HttpClient client = new();
+    client.DefaultRequestHeaders.Accept.Clear();
+    client.DefaultRequestHeaders.Accept.Add(
+        new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
+    client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
+    
+    await ProcessRepositoriesAsync(client);
+    
+    static async Task ProcessRepositoriesAsync(HttpClient client)
+    {
+        await using Stream stream =
+            await client.GetStreamAsync("https://api.github.com/orgs/dotnet/repos");
+        var repositories =
+            await JsonSerializer.DeserializeAsync<List<Repository>>(stream);
+    
+        foreach (var repo in repositories ?? Enumerable.Empty<Repository>())
+            Console.Write(repo.name);
+    }
+    ```
+
 1. Run the app.
 
+   <!-- replaycheck-task id="ff02c0d4" -->
    ```dotnetcli
    dotnet run
    ```
@@ -184,6 +240,7 @@ The following steps convert the JSON response into C# objects. You use the <xref
 
 1. In *Repository.cs*, replace the file contents with the following C#.
 
+   <!-- replaycheck-task id="dd18ef0" -->
     ```csharp
     using System.Text.Json.Serialization;
 
@@ -203,8 +260,36 @@ The following steps convert the JSON response into C# objects. You use the <xref
       Console.Write(repo.Name);
    ```
 
+    *Program.cs* looks like this:
+
+    <!-- replaycheck-task id="1437f129" -->
+    ```csharp
+    using System.Net.Http.Headers;
+    using System.Text.Json;
+    
+    using HttpClient client = new();
+    client.DefaultRequestHeaders.Accept.Clear();
+    client.DefaultRequestHeaders.Accept.Add(
+        new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
+    client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
+    
+    await ProcessRepositoriesAsync(client);
+    
+    static async Task ProcessRepositoriesAsync(HttpClient client)
+    {
+        await using Stream stream =
+            await client.GetStreamAsync("https://api.github.com/orgs/dotnet/repos");
+        var repositories =
+            await JsonSerializer.DeserializeAsync<List<Repository>>(stream);
+    
+        foreach (var repo in repositories)
+          Console.Write(repo.Name);
+    }
+    ```
+
 1. Run the app.
 
+   <!-- replaycheck-task id="b258a6cc" -->
    The output is the same.
 
 ## Refactor the code
@@ -238,8 +323,37 @@ The `ProcessRepositoriesAsync` method can do the async work and return a collect
         Console.Write(repo.Name);
     ```
 
+    *Program.cs* looks like this:
+
+   <!-- replaycheck-task id="ef442c63" -->
+    ```csharp
+    using System.Net.Http.Headers;
+    using System.Text.Json;
+    
+    using HttpClient client = new();
+    client.DefaultRequestHeaders.Accept.Clear();
+    client.DefaultRequestHeaders.Accept.Add(
+        new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
+    client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
+    
+    var repositories = await ProcessRepositoriesAsync(client);
+    
+    foreach (var repo in repositories)
+        Console.Write(repo.Name);
+    
+    static async Task<List<Repository>> ProcessRepositoriesAsync(HttpClient client)
+    {
+        await using Stream stream =
+            await client.GetStreamAsync("https://api.github.com/orgs/dotnet/repos");
+        var repositories =
+            await JsonSerializer.DeserializeAsync<List<Repository>>(stream);
+        return repositories ?? new();
+    }
+    ```
+
 1. Run the app.
 
+   <!-- replaycheck-task id="9c8736e" -->
    The output is the same.
 
 ## Deserialize more properties

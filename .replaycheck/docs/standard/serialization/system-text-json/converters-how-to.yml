@@ -1,0 +1,8 @@
+# %version 1
+contentPath: docs\standard\serialization\system-text-json\converters-how-to.md
+
+steps:
+- task: RunCodeSnippetReference@1
+  environment:
+    type: dotnet-sdk
+  uid: 155c3417

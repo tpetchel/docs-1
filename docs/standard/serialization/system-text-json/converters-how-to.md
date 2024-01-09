@@ -66,6 +66,7 @@ The basic pattern creates a class that can handle one type. The factory pattern 
 
 The following sample is a converter that overrides default serialization for an existing data type. The converter uses mm/dd/yyyy format for `DateTimeOffset` properties.
 
+<!-- replaycheck-task id="155c3417" -->
 :::code language="csharp" source="snippets/how-to/csharp/DateTimeOffsetConverter.cs":::
 
 ## Sample factory pattern converter

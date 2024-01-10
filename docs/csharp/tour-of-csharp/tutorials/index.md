@@ -69,4 +69,8 @@ This tutorial assumes that you've finished the lessons listed above.
 
 ## [101 Linq Samples](https://github.com/dotnet/try-samples/tree/main/101-linq-samples)
 
+<!-- replaycheck-task id="fd1df5e4" -->
+<!-- replaycheck-task id="12209123" -->
+<!-- replaycheck-task id="3249d37f" -->
+<!-- replaycheck-task id="495b4184" -->
 This sample requires the [dotnet-try](https://github.com/dotnet/try/blob/main/README.md#setup) global tool. Once you install the tool, and clone the [try-samples](https://github.com/dotnet/try-samples) repo, you can learn Language Integrated Query (LINQ) through a set of 101 samples you can run interactively. You can explore different ways to query, explore, and transform data sequences.

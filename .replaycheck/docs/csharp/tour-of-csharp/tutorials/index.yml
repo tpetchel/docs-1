@@ -1,0 +1,25 @@
+# %version 1
+contentPath: docs\csharp\tour-of-csharp\tutorials\index.md
+
+steps:
+- task: InstallPackages@1
+  environment:
+    type: dotnet-sdk
+  packages:
+  - git
+  uid: fd1df5e4
+- task: RunCommand@1
+  command: git clone https://github.com/dotnet/try-samples
+  environment:
+    type: dotnet-sdk
+  uid: "12209123"
+- task: RunCommand@1
+  command: cd try-samples/101-linq-samples/src
+  environment:
+    type: dotnet-sdk
+  uid: 3249d37f
+- task: RunCommand@1
+  command: dotnet build
+  environment:
+    type: dotnet-sdk
+  uid: 495b4184

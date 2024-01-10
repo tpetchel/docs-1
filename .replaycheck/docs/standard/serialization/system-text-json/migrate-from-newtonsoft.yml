@@ -1,0 +1,17 @@
+# %version 1
+contentPath: docs\standard\serialization\system-text-json\migrate-from-newtonsoft.md
+
+steps:
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-script
+    version: "8.0"
+  outputValidationRules:
+  - operator: contains
+    value: JsonException
+  uid: f0c8e88a
+- task: RunCodeSnippetReference@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 3bc5293d

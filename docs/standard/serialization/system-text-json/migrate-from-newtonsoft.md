@@ -392,6 +392,7 @@ To support polymorphic deserialization in older .NET versions, create a converte
 
 By default, System.Text.Json doesn't support deserializing string enum values, whereas `Newtonsoft.Json` does. For example, the following code throws a <xref:System.Text.Json.JsonException>:
 
+<!-- replaycheck-task id="f0c8e88a" -->
 ```csharp
 string json = "{ \"Text\": \"Hello\", \"Enum\": \"Two\" }";
 var _ = JsonSerializer.Deserialize<MyObj>(json); // Throws exception.
@@ -444,6 +445,7 @@ If you own the target type, the best workaround is to make the property in quest
 
 Another workaround is to make a converter for the type, such as the following example that handles null values for `DateTimeOffset` types:
 
+<!-- replaycheck-task id="3bc5293d" -->
 :::code language="csharp" source="snippets/how-to/csharp/DateTimeOffsetNullHandlingConverter.cs":::
 
 Register this custom converter by [using an attribute on the property](converters-how-to.md#registration-sample---jsonconverter-on-a-property) or by [adding the converter](converters-how-to.md#registration-sample---converters-collection) to the <xref:System.Text.Json.JsonSerializerOptions.Converters> collection.

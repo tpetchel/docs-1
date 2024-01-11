@@ -40,12 +40,15 @@ Create a .NET console app project named "HelloWorld".
 
 1. In the **Terminal**, enter the following command:
 
+   <!-- replaycheck-task id="eb245e69" -->
    ```dotnetcli
    dotnet new console --framework net8.0 --use-program-main
    ```
 
    Open the *Program.cs* file to see the simple application created by the template:
 
+   <!-- replaycheck-task id="9f5e9185" -->
+   <!-- replaycheck-task id="ab698795" -->
    ```csharp
    namespace HelloWorld;
 
@@ -74,6 +77,7 @@ Create a .NET console app project named "HelloWorld".
 
 Run the following command in the **Terminal**:
 
+<!-- replaycheck-task id="fc9629d4" -->
 ```dotnetcli
 dotnet run
 ```
@@ -90,6 +94,7 @@ Enhance the application to prompt the user for their name and display it along w
 
 1. Replace the contents of the `Main` method in *Program.cs*, which is the line that calls `Console.WriteLine`, with the following code:
 
+   <!-- replaycheck-task id="5585f719" -->
    :::code language="csharp" source="./snippets/with-visual-studio/csharp/Program.cs" id="MainMethod":::
 
    This code displays a prompt in the console window and waits until the user enters a string followed by the <kbd>Enter</kbd> key. It stores this string in a variable named `name`. It also retrieves the value of the <xref:System.DateTime.Now?displayProperty=nameWithType> property, which contains the current local time, and assigns it to a variable named `currentDate`. And it displays these values in the console window. Finally, it displays a prompt in the console window and calls the <xref:System.Console.ReadKey(System.Boolean)?displayProperty=nameWithType> method to wait for user input.
@@ -105,6 +110,7 @@ Enhance the application to prompt the user for their name and display it along w
 
 1. Run the program again:
 
+   <!-- replaycheck-task id="8de89dff" -->
    ```dotnetcli
    dotnet run
    ```

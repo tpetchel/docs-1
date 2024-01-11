@@ -1,0 +1,36 @@
+# %version 1
+contentPath: docs\core\tutorials\with-visual-studio-code.md
+
+steps:
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  append: ' -n HelloWorld'
+  uid: eb245e69
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: fc9629d4
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: HelloWorld/Program.cs
+  uid: 5585f719
+- task: RunCommand@1
+  command: cd HelloWorld && cat Program.cs
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 9f5e9185
+- task: CheckCodeSnippet@1
+  contentValidationRules:
+  - source: Task output
+    value: 9f5e9185 (Run a command)
+  uid: ab698795
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  userInput:
+  - Nancy
+  uid: 8de89dff

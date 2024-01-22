@@ -1,0 +1,57 @@
+# %version 1
+contentPath: docs\core\extensions\windows-service.md
+
+steps:
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: ebf4f2be
+- task: SetPlaceholder@1
+  textToReplace: <Project.Name>
+  replacementText: App.WindowsService
+  uid: f28a72ec
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 30fc43f0
+- task: RunCommand@1
+  command: cd <Project.Name>
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 46b3134d
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: App.WindowsService/App.WindowsService.csproj
+  uid: 6fc34455
+- task: RunCommand@1
+  command: ls
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: dd7f0133
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: App.WindowsService/JokeService.cs
+  uid: 49b5dee5
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: App.WindowsService/WindowsBackgroundService.cs
+  uid: 6b991c91
+- task: RunCommand@1
+  command: rm App.WindowsService/Worker.cs
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 885a3366
+- task: CopyCodeSnippetToWorkspace@1
+  destinationPath: App.WindowsService/Program.cs
+  uid: a5ecaea5
+- task: RunCodeSnippet@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 5a94d73f
+- task: SetPlaceholder@1
+  textToReplace: C:\custom\publish\directory
+  replacementText: ./publish
+  uid: 66f70d0b

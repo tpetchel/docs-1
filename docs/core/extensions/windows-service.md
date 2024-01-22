@@ -7,8 +7,11 @@ ms.date: 12/13/2023
 ms.topic: tutorial
 ---
 
+
 # Create Windows Service using `BackgroundService`
 
+<!-- replaycheck-task id="f28a72ec" -->
+<!-- replaycheck-task id="ebf4f2be" -->
 .NET Framework developers are probably familiar with Windows Service apps. Before .NET Core and .NET 5+, developers who relied on .NET Framework could create Windows Services to perform background tasks or execute long-running processes. This functionality is still available and you can create Worker Services that run as a Windows Service.
 
 In this tutorial, you'll learn how to:
@@ -40,6 +43,9 @@ In this tutorial, you'll learn how to:
 
 To interop with native Windows Services from .NET <xref:Microsoft.Extensions.Hosting.IHostedService> implementations, you'll need to install the [`Microsoft.Extensions.Hosting.WindowsServices` NuGet package](https://nuget.org/packages/Microsoft.Extensions.Hosting.WindowsServices).
 
+<!-- replaycheck-task id="46b3134d" -->
+<!-- replaycheck-task id="dd7f0133" -->
+<!-- replaycheck-task id="30fc43f0" -->
 To install this from Visual Studio, use the **Manage NuGet Packages...** dialog. Search for "Microsoft.Extensions.Hosting.WindowsServices", and install it. If you'd rather use the .NET CLI, run the `dotnet add package` command:
 
 ```dotnetcli
@@ -54,6 +60,7 @@ After successfully adding the packages, your project file should now contain the
 
 ## Update project file
 
+<!-- replaycheck-task id="6fc34455" -->
 This worker project makes use of C#'s [nullable reference types](../../csharp/nullable-references.md). To enable them for the entire project, update the project file accordingly:
 
 :::code language="xml" source="snippets/workers/windows-service/App.WindowsService.csproj" range="1-7,12-20" highlight="5":::
@@ -64,6 +71,7 @@ The preceding project file changes add the `<Nullable>enable<Nullable>` node. Fo
 
 Add a new class to the project named *JokeService.cs*, and replace its contents with the following C# code:
 
+<!-- replaycheck-task id="49b5dee5" -->
 :::code source="snippets/workers/windows-service/JokeService.cs":::
 
 The preceding joke service source code exposes a single piece of functionality, the `GetJoke` method. This is a `string` returning method that represents a random programming joke. The class-scoped `_jokes` field is used to store the list of jokes. A random joke is selected from the list and returned.
@@ -72,6 +80,8 @@ The preceding joke service source code exposes a single piece of functionality, 
 
 Replace the existing `Worker` from the template with the following C# code, and rename the file to *WindowsBackgroundService.cs*:
 
+<!-- replaycheck-task id="885a3366" -->
+<!-- replaycheck-task id="6b991c91" -->
 :::code source="snippets/workers/windows-service/WindowsBackgroundService.cs":::
 
 In the preceding code, the `JokeService` is injected along with an `ILogger`. Both are made available to the class as `private readonly` fields. In the `ExecuteAsync` method, the joke service requests a joke and writes it to the logger. In this case, the logger is implemented by the Windows Event Log - <xref:Microsoft.Extensions.Logging.EventLog.EventLogLogger?displayProperty=nameWithType>. Logs are written to, and available for viewing in the **Event Viewer**.
@@ -103,6 +113,7 @@ In the preceding code, the `JokeService` is injected along with an `ILogger`. Bo
 
 Replace the template *Program.cs* file contents with the following C# code:
 
+<!-- replaycheck-task id="a5ecaea5" -->
 :::code source="snippets/workers/windows-service/Program.cs" highlight="6-9,14-15":::
 
 The `AddWindowsService` extension method configures the app to work as a Windows Service. The service name is set to `".NET Joke Service"`. The hosted service is registered for dependency injection.
@@ -149,6 +160,8 @@ Finally, select **Publish**. The app is compiled, and the resulting .exe file is
 
 Alternatively, you could use the .NET CLI to publish the app:
 
+<!-- replaycheck-task id="66f70d0b" -->
+<!-- replaycheck-task id="5a94d73f" -->
 ```dotnetcli
 dotnet publish --output "C:\custom\publish\directory"
 ```

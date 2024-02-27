@@ -1,0 +1,10 @@
+# %version 1
+contentPath: docs\standard\base-types\parsing-datetime.md
+
+steps:
+- task: RunCodeSnippet@1
+  outputMarker: 'en-US:'
+  environment:
+    type: dotnet-try
+  uid: e8930d2e
+  condition: Always

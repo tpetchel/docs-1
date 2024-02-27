@@ -1,0 +1,19 @@
+# %version 1
+contentPath: docs\core\tutorials\top-level-templates.md
+
+steps:
+- task: RunCustomCommand@1
+  command: dotnet new console
+  environment:
+    type: dotnet-sdk
+  uid: 3ee73188
+- task: RunCustomCommand@1
+  command: cat Program.cs
+  environment:
+    type: dotnet-sdk
+  uid: 490194b0
+- task: CheckCodeSnippet@1
+  contentValidationRules:
+  - source: Task output
+    value: 490194b0 (Run a custom command)
+  uid: 46ccc3da

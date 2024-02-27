@@ -7,6 +7,9 @@ ms.date: 11/08/2022
 
 Starting with .NET 6, the project template for new C# console apps generates the following code in the *Program.cs* file:
 
+<!-- replaycheck-task id="3ee73188" -->
+<!-- replaycheck-task id="490194b0" -->
+<!-- replaycheck-task id="46ccc3da" -->
 ```csharp
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");

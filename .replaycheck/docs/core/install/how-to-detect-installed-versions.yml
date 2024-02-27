@@ -1,0 +1,13 @@
+# %version 1
+contentPath: docs\core\install\how-to-detect-installed-versions.md
+
+steps:
+- task: RunCommand@1
+  environment:
+    type: dotnet-sdk
+  outputValidationRules:
+  - operator: contains
+    value: dotnet
+  - operator: contains
+    value: sdk
+  uid: 53f84eb4

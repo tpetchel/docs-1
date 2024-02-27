@@ -52,6 +52,7 @@ The following example illustrates the use of the <xref:System.DateTime.Parse%2A?
 > [!NOTE]
 > These examples are available in the GitHub docs repo for both [C#](https://github.com/dotnet/docs/tree/main/samples/snippets/csharp/how-to/conversions) and [Visual Basic](https://github.com/dotnet/docs/tree/main/samples/snippets/visualbasic/how-to/conversions).
 
+<!-- replaycheck-task id="e8930d2e" -->
 [!code-csharp-interactive[Parsing.DateAndTime#1](../../../samples/snippets/csharp/how-to/conversions/StringToDateTime.cs#1)]
 [!code-vb[Parsing.DateAndTime#1](../../../samples/snippets/visualbasic/how-to/conversions/Program.vb#1)]
 

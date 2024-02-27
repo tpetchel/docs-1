@@ -20,6 +20,7 @@ If any command in this article fails, you don't have the runtime or SDK installe
 
 You can see which versions of the .NET SDK are currently installed with a terminal. Open a terminal and run the following command.
 
+<!-- replaycheck-task id="53f84eb4" -->
 ```dotnetcli
 dotnet --list-sdks
 ```

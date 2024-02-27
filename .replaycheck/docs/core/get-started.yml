@@ -1,0 +1,15 @@
+# %version 1
+contentPath: docs\core\get-started.md
+
+steps:
+- task: RunCommand@1
+  environment:
+    type: dotnet-sdk
+    version: "8.0"
+  uid: 635d0354
+- task: CheckCodeSnippet@1
+  contentValidationRules:
+  - operator: in
+    source: Task output
+    value: 635d0354 (Run a command)
+  uid: "704e6820"

@@ -19,6 +19,7 @@ Next, open a terminal such as **PowerShell**, **Command Prompt**, or **bash**.
 
 Type the following commands:
 
+<!-- replaycheck-task id="635d0354" -->
 ```dotnetcli
 dotnet new console -o sample1
 cd sample1
@@ -27,6 +28,7 @@ dotnet run
 
 You should see the following output:
 
+<!-- replaycheck-task id="704e6820" -->
 ```output
 Hello World!
 ```
